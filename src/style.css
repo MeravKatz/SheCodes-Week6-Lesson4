@@ -1,7 +1,14 @@
-.container {
+.weather-app-wrapper {
   font-family: "Share Tech Mono", monospace;
-  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
   max-width: 700px;
+  margin: 30px auto;
+}
+
+.weather-app {
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  padding: 20px;
+  border: 1px solid #dfe9f3;
+  border-radius: 10px;
 }
 
 h1 {
@@ -27,8 +34,8 @@ input {
   text-align: center;
 }
 
-.icon-today {
-  font-size: 100px;
+.row.today {
+  padding-bottom: 20px;
 }
 
 .temp-today {
