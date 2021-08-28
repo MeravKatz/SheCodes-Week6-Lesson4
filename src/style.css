@@ -11,12 +11,6 @@
   border-radius: 10px;
 }
 
-h1 {
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-}
 h3 {
   font-family: "Poppins", sans-serif;
   font-size: 18px;
@@ -42,7 +36,14 @@ input {
   padding-top: 70px;
 }
 
-.temperature {
+#city {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+#temperature {
   font-size: 100px;
 }
 

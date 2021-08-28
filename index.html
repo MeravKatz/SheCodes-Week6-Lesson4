@@ -34,15 +34,14 @@
         <div class="weather-app">
           <form id="city-search"><input type="text" placeholder="Search for city... 🔍" id="search-input" /></form>
           <button>Current Location</button>
-          <h1>Tel Aviv</h1>
+          <h1 id="city"></h1>
           <div class="time">July 10, 1:51 pm</div>
           <div class="row today">
             <div class="col-6 icon-today">
               <img src="media/Sun.svg" alt="sunny" width="300px"/>
             </div>
             <div class="col-6 temp-today">
-              <span class = "temperature" id="temperature">
-              31
+              <span id="temperature">
               </span>
               <span class="degrees">
                 <a href="#" id="celsius">
@@ -63,12 +62,12 @@
             <div class="col-3">
               <h3>Wind</h3>
               <br />
-              5 km/hr
+              <span id="wind"></span> km/hr
             </div>
             <div class="col-3">
               <h3>Humidity</h3>
               <br />
-              38%
+              <span id="humidity"></span>%
             </div>
             <div class="col-3">
               <h3>Feels like</h3>
