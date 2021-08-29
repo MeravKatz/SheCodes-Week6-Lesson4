@@ -24,12 +24,14 @@ input {
 .time {
   text-align: center;
 }
-.row {
+
+.row.conditions {
   text-align: center;
 }
 
 .row.today {
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .temp-today {
@@ -61,10 +63,12 @@ input {
 
 .row.hourly {
   margin: 40px 25px 0;
+  text-align: center;
 }
 
 .row.daily {
   line-height: 2.5;
   margin: 0 150px 40px;
   padding-bottom: 20px;
+  text-align: center;
 }
