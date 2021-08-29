@@ -32,9 +32,30 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <form id="city-search"><input type="text" placeholder="Search for city... 🔍" id="search-input" /></form>
-          <button type="button" class="btn btn-outline-primary">Search</button>
-          <button type="button" class="btn btn-outline-primary">Current Location</button>
+          <form id="city-search" class="mb-3">
+            <div class="row">
+              <div class="col-6">
+            <input 
+            type="search" 
+            placeholder="Search for city... 🔍" 
+            class="form-control"
+            id="search-input" 
+            />
+            </div>
+            <div class="col-3">
+          <input 
+          type="submit" 
+          value="Search" 
+          class="btn btn-outline-primary"
+          />
+          </div>
+          </div>
+          </form>
+          <button id="location-button"
+          type="button" 
+          class="btn btn-outline-primary">
+          Current Location
+        </button>
           <h1 id="city"></h1>
           <div class="time"></div>
           <div class="row today">

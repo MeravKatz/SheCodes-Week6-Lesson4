@@ -78,8 +78,8 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(findCity);
 }
 
-let button = document.querySelector("button");
-button.addEventListener("click", getCurrentLocation);
+let locationButton = document.querySelector("#location-button");
+locationButton.addEventListener("click", getCurrentLocation);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCityTemp);
