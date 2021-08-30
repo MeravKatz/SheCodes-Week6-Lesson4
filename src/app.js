@@ -48,6 +48,7 @@ function showCityTemp(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+  let forecastElement = document.querySelector("#forecast");
   celsiusTemp = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(celsiusTemp);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -58,6 +59,25 @@ function showCityTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  forecastElement.innerHTML = `
+              <div class="row">
+            <div class="col-4">
+              <div class="forecast-day">Tomorrow</div>
+            </div>
+            <div class="col-4">
+              <img src="media/Sun.svg" alt="sunny" width="50" />
+              <br />
+            </div>
+            <div class="col-4">
+              <div class="forecast-temp">
+              <span class="forecast-temp-max">32℃</span>
+              /
+              <span class="forecast-temp-min">24℃</span>
+              <br />
+            </div>
+            </div>
+            </div>
+  `;
 }
 
 function handleSubmit(event) {
