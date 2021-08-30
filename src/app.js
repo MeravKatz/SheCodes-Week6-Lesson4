@@ -47,33 +47,25 @@ function getForecast(coordinates) {
 }
 
 function showForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
             <div class="col-4">
-              <div class="forecast-day">${day}</div>
+              <div class="forecast-day">${forecastDay.dt}</div>
             </div>
             <div class="col-4">
-              <img src="media/Sun.svg" alt="sunny" width="50" />
+              <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" />
               <br />
             </div>
             <div class="col-4">
               <div class="forecast-temp">
-              <span class="forecast-temp-max">32℃</span>
+              <span class="forecast-temp-max">${forecastDay.temperatureElement.max}℃</span>
               /
-              <span class="forecast-temp-min">24℃</span>
+              <span class="forecast-temp-min">${forecastDay.temperatureElement.min}℃</span>
               <br />
             </div>
             </div>
