@@ -62,13 +62,12 @@ input {
 }
 
 .row.hourly {
-  margin: 40px 25px 0;
+  margin: 40px 25px 10px;
   text-align: center;
 }
 
 .row.daily {
   line-height: 2.5;
-  margin: 0 150px 40px;
-  padding-bottom: 20px;
+  margin: 10px 150px;
   text-align: center;
 }

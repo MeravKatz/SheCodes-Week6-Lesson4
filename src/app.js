@@ -103,4 +103,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
 searchCelsius("Austin");
-let celsiusTemp = 0;
