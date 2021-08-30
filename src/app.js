@@ -59,10 +59,22 @@ function showCityTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  forecastElement.innerHTML = `
-              <div class="row">
+  let forecastHTML = `<div class="row">`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
             <div class="col-4">
-              <div class="forecast-day">Tomorrow</div>
+              <div class="forecast-day">${day}</div>
             </div>
             <div class="col-4">
               <img src="media/Sun.svg" alt="sunny" width="50" />
@@ -76,8 +88,10 @@ function showCityTemp(response) {
               <br />
             </div>
             </div>
-            </div>
   `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function handleSubmit(event) {
