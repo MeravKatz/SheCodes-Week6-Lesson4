@@ -46,7 +46,7 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(showForecast);
 }
 
-function formatDay(timestampm) {
+function formatDay(timestamp) {
   let date = newDate(timestamp * 1000);
   let day = date.getDay();
   let days = [
@@ -71,7 +71,9 @@ function showForecast(response) {
         forecastHTML +
         `
             <div class="col-4">
-              <div class="forecast-day">${formatDat(forecastDay.dt)}</div>
+              <div class="forecast-day">${formatDate(
+                newDate(forecastDay.dt)
+              )}</div>
             </div>
             <div class="col-4">
               <img src="http://openweathermap.org/img/wn/${
