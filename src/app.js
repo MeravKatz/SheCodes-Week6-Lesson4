@@ -72,7 +72,7 @@ function showForecast(response) {
         `
             <div class="col-4">
               <div class="forecast-day">${formatDate(
-                newDate(forecastDay.dt)
+                new Date(forecastDay.dt)
               )}</div>
             </div>
             <div class="col-4">
