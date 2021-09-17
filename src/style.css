@@ -5,7 +5,12 @@
 }
 
 .weather-app {
-  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  background: linear-gradient(
+    1.3deg,
+    rgb(91, 117, 163) 11.4%,
+    rgb(68, 98, 128) 77%
+  );
+
   padding: 20px;
   border: 1px solid #dfe9f3;
   border-radius: 10px;
@@ -18,9 +23,11 @@ h3 {
   padding-bottom: 0;
   line-height: 0.1;
 }
+
 input {
   margin-top: 20px;
 }
+
 .time {
   text-align: center;
 }
@@ -30,17 +37,13 @@ input {
   text-transform: capitalize;
 }
 
-.row.conditions {
-  text-align: center;
-}
-
-.row.today {
-  padding-bottom: 20px;
+.today {
+  padding: 30px 0;
   text-align: center;
 }
 
 .temp-today {
-  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
 #city {
@@ -60,15 +63,6 @@ input {
 
 #celsius {
   text-decoration: none;
-}
-
-#fahrenheit {
-  text-decoration: none;
-}
-
-.row.hourly {
-  margin: 40px 25px 10px;
-  text-align: center;
 }
 
 .forecast {

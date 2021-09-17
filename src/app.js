@@ -4,21 +4,11 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
 axios.get(apiUrl).then(showCityTemp);
 
 let currentTime = new Date();
-
 let time = document.querySelector(".time");
+time.innerHTML = formatDate(currentTime);
 
-function formatDate(time) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[time.getDay()];
-
+function formatDate(timestamp) {
+  let time = new Date(timestamp);
   let hours = time.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -28,27 +18,24 @@ function formatDate(time) {
     minutes = `0${minutes}`;
   }
 
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let day = days[time.getDay()];
+
   return `${day} ${hours}:${minutes}`;
 }
 
-time.innerHTML = formatDate(currentTime);
-
-function searchCelsius(city) {
-  let apiKey = "861aadcbcec3a81c62e577eccbc0bb70";
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showCityTemp);
-}
-
-function getForecast(coordinates) {
-  let apiKey = "861aadcbcec3a81c62e577eccbc0bb70";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showForecast);
-}
-
 function formatDay(timestamp) {
-  let date = newDate(timestamp * 1000);
-  let day = date.getDay();
+  let time = new Date(timestamp * 1000);
+  let day = time.getDay();
   let days = [
     "Sunday",
     "Monday",
@@ -71,9 +58,7 @@ function showForecast(response) {
         forecastHTML +
         `
             <div class="col-4">
-              <div class="forecast-day">${formatDate(
-                new Date(forecastDay.dt)
-              )}</div>
+              <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
             </div>
             <div class="col-4">
               <img src="http://openweathermap.org/img/wn/${
@@ -100,14 +85,20 @@ function showForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "861aadcbcec3a81c62e577eccbc0bb70";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 function showCityTemp(response) {
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.name;
   let temperatureElement = document.querySelector("#temperature");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+  cityElement.innerHTML = response.data.name;
   celsiusTemp = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(celsiusTemp);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -119,6 +110,13 @@ function showCityTemp(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
+}
+
+function searchCelsius(city) {
+  let apiKey = "861aadcbcec3a81c62e577eccbc0bb70";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showCityTemp);
 }
 
 function handleSubmit(event) {
@@ -143,14 +141,5 @@ function getCurrentLocation(event) {
 
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", getCurrentLocation);
-
-function showCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", showCelsius);
 
 searchCelsius("Austin");
